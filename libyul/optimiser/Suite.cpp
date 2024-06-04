@@ -199,27 +199,27 @@ void OptimiserSuite::run(
 	if (evmDialect)
 	{
 		yulAssert(_meter, "");
-		ConstantOptimiser{*evmDialect, *_meter}(astRoot);
-		if (usesOptimizedCodeGenerator)
-		{
-			_object.setCode(std::make_shared<AST>(std::move(astRoot)));
-			astRoot = std::get<1>(StackCompressor::run(
-				_dialect,
-				_object,
-				_optimizeStackAllocation,
-				stackCompressorMaxIterations
-			));
-			if (evmDialect->providesObjectAccess())
-			{
-				_object.setCode(std::make_shared<AST>(std::move(astRoot)));
-				astRoot = StackLimitEvader::run(suite.m_context, _object);
-			}
-		}
-		else if (evmDialect->providesObjectAccess() && _optimizeStackAllocation)
-		{
-			_object.setCode(std::make_shared<AST>(std::move(astRoot)));
-			astRoot = StackLimitEvader::run(suite.m_context, _object);
-		}
+		//ConstantOptimiser{*evmDialect, *_meter}(astRoot);
+		//if (usesOptimizedCodeGenerator)
+		//{
+		//	_object.setCode(std::make_shared<AST>(std::move(astRoot)));
+		//	astRoot = std::get<1>(StackCompressor::run(
+		//		_dialect,
+		//		_object,
+		//		_optimizeStackAllocation,
+		//		stackCompressorMaxIterations
+		//	));
+		//	if (evmDialect->providesObjectAccess())
+		//	{
+		//		_object.setCode(std::make_shared<AST>(std::move(astRoot)));
+		//		astRoot = StackLimitEvader::run(suite.m_context, _object);
+		//	}
+		//}
+		//else if (evmDialect->providesObjectAccess() && _optimizeStackAllocation)
+		//{
+		//	_object.setCode(std::make_shared<AST>(std::move(astRoot)));
+		//	astRoot = StackLimitEvader::run(suite.m_context, _object);
+		//}
 	}
 
 	dispenser.reset(astRoot);

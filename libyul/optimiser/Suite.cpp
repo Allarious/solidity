@@ -221,7 +221,7 @@ void OptimiserSuite::run(
 		//	astRoot = StackLimitEvader::run(suite.m_context, _object);
 		//}
 	}
-	suite.runSequence("x", astRoot);
+	suite.runSequence("xTu", astRoot);
 
 	dispenser.reset(astRoot);
 	//NameSimplifier::run(suite.m_context, astRoot);

@@ -199,7 +199,7 @@ void OptimiserSuite::run(
 	if (evmDialect)
 	{
 		yulAssert(_meter, "");
-		//ConstantOptimiser{*evmDialect, *_meter}(astRoot);
+		ConstantOptimiser{*evmDialect, *_meter}(astRoot);
 		//if (usesOptimizedCodeGenerator)
 		//{
 		//	_object.setCode(std::make_shared<AST>(std::move(astRoot)));
@@ -221,6 +221,7 @@ void OptimiserSuite::run(
 		//	astRoot = StackLimitEvader::run(suite.m_context, _object);
 		//}
 	}
+	suite.runSequence("x", astRoot);
 
 	dispenser.reset(astRoot);
 	//NameSimplifier::run(suite.m_context, astRoot);

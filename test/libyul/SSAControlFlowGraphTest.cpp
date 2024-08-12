@@ -273,7 +273,7 @@ TestCase::TestResult SSAControlFlowGraphTest::run(std::ostream& _stream, std::st
 	auto ssaCfg = SSAControlFlowGraphBuilder::build(
 		info,
 		*m_dialect,
-		*object->code
+		object->code()->root()
 	);
 
 	output << "digraph SSACFG {\nnodesep=0.7;\nnode[shape=box];\n\n";
